@@ -1,5 +1,6 @@
   # Moodify - Your Personal Mood DJ 🎵 using Mira AI Flows
 Submission by Chaitanya Jha | IIT Patna | chaitanyajha@icloud.com
+--
 Demo Video Link: https://youtu.be/sr8SNk0gbOQ
 --
  <img width="1470" alt="Screenshot 2024-12-27 at 4 26 58 AM" src="https://github.com/user-attachments/assets/0ebc629b-306f-48b3-b8a1-59fef7ca1b91" />
