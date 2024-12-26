@@ -1,6 +1,6 @@
   # Moodify - Your Personal Mood DJ 🎵
 
-Chaitanya Jha | IIT Patna | chaitanyajha@icloud.com
+Submission by Chaitanya Jha | IIT Patna | chaitanyajha@icloud.com
 --
   
   ## About
