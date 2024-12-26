@@ -2,7 +2,8 @@
 
 Submission by Chaitanya Jha | IIT Patna | chaitanyajha@icloud.com
 --
-  
+ <img width="1470" alt="Screenshot 2024-12-27 at 4 26 58 AM" src="https://github.com/user-attachments/assets/0ebc629b-306f-48b3-b8a1-59fef7ca1b91" />
+ 
   ## About
   Moodify transforms your emotional state and daily context into perfectly curated music experiences. This advanced AI-powered system uses OpenAI gpt-4o to analyze multiple parameters including your mood, current activity, recent life events, energy level, genre preferences, time of day, weather conditions, wellness goals, and preferred music pace to generate highly personalized playlists.
 
