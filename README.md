@@ -24,9 +24,8 @@ Submission by Chaitanya Jha | IIT Patna | chaitanyajha@icloud.com
   - Smart transition management
   - Psychological impact analysis
 
-<img width="1470" alt="Screenshot 2024-12-27 at 4 37 13 AM" src="https://github.com/user-attachments/assets/63d41282-c806-4bfd-bb03-28e05ca6e2f2" />
 <img width="1470" alt="Screenshot 2024-12-27 at 4 37 09 AM" src="https://github.com/user-attachments/assets/8c6e6a28-2774-4bed-94fc-e83475c44027" />
-
+<img width="1470" alt="Screenshot 2024-12-27 at 4 37 13 AM" src="https://github.com/user-attachments/assets/63d41282-c806-4bfd-bb03-28e05ca6e2f2" />
 
   ## Example Input
   ```json
