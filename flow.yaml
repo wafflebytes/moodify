@@ -1,0 +1,396 @@
+# version format ex. "0.0.1"
+version: "1.2.1"
+
+# Basic metadata for the agent
+metadata:
+  name: "Moodify - Your Personal Mood DJ"
+  description: "Moodify is your intelligent music and wellness companion that transforms your emotional state into perfectly curated playlists. By analyzing your mood, activity, environment, and wellness goals, our AI crafts personalized music recommendations that support your mental well-being and enhance your daily rhythm. Whether you're seeking motivation, focus, relaxation, or emotional support, Moodify delivers scientifically optimized playlists that help you achieve your desired state of mind through the power of perfectly matched music."
+  author: "wafflebytes" # This username should match your account username
+  tags: [
+  ai,
+  music-recommendation,
+  mood-analysis,
+  personalized-playlists,
+  emotional-wellness,
+  activity-based-music,
+  wellness-companion,
+  mental-health,
+  productivity-enhancement,
+  weather-based-recommendations,
+  energy-optimization,
+  mood-tracking,
+  contextual-music,
+  ai-curator,
+  emotional-intelligence,
+  mindfulness,
+  study-music,
+  workout-playlists,
+  genre-matching,
+  music-therapy,
+  daily-routine-optimization,
+  tempo-matching,
+  adaptive-playlists,
+  psychological-well-being,
+  focus-enhancement,
+  stress-reduction]
+  private: false # Access control for your flows (true/false)
+
+# Define the input variables required
+inputs:
+  mood:
+    type: string
+    description: "Select your current mood."
+    required: true
+    example: "Happy, Sad, Excited, Relaxed"
+  activity:
+    type: string
+    description: "Select your current activity."
+    required: false
+    example: "Studying, Working, Exercising"
+  event:
+    type: string
+    description: "Describe any recent event affecting your mood."
+    required: false
+    example: "Passed an exam, Had a bad day, Celebrated a milestone"
+  energy_level:
+    type: integer
+    description: "Select your current energy level (0-100)."
+    required: false
+    example: 80
+  genre:
+    type: string
+    description: "Select your preferred music genre."
+    required: false
+    example: "Pop, Rock, Jazz, Classical, Blues, Hip-Hop"
+  time_of_day:
+    type: string
+    description: "Select the current time of day."
+    required: false
+    example: "Morning, Afternoon, Evening, Night"
+  weather:
+    type: string
+    description: "Select the current weather condition."
+    required: false
+    example: "Sunny, Rainy, Snowy, Cloudy"
+  wellness_needs:
+    type: string
+    description: "Select your wellness needs."
+    required: false
+    example: ["Motivation", "Focus", "Relaxation", "Energy Boost", "Emotional Support", "Reflection"]
+  music_pace:
+    type: integer
+    description: "Select your preferred music pace (0-100)."
+    required: false
+    example: 70
+
+# LLM configuration
+model:
+  provider: "openai" # e.g., anthropic, openai, meta, etc.
+  name: "gpt-4o"
+
+# Algorithm configuration for prioritizing input parameters
+algorithm:
+  priority_order:
+    1. Mood
+    2. Activity
+    3. Energy Level
+    4. Genre
+    5. Wellness Needs
+    6. Time of Day
+    7. Weather
+    8. Music Pace
+    9. Recent Event
+  weightings:
+    mood: 0.25
+    activity: 0.20
+    energy_level: 0.15
+    genre: 0.10
+    wellness_needs: 0.10
+    time_of_day: 0.08
+    weather: 0.07
+    music_pace: 0.05
+    recent_event: 0.05
+
+# Prompt template configuration
+prompt: |
+  **Role Specification:** Assume the role of a music curator with expertise in data-driven playlist generation.
+  **Objective:** Generate a scientifically optimized and mathematically precise personalized music playlist based on the following parameters:
+
+  - **Playlist Generation:** Based on the composite score, generate a list of 20-30 unique song titles that best fit the user's preferences.
+  - **Output Format:** Provide the playlist in a structured JSON format as shown below.
+
+  **Output Format:**
+  1. Song Title 1, Album, Artist
+  2. Song Title 2, Album, Artist
+  3. ...
+
+  **Things To Consider:**
+
+  REMEMBER:
+  IF GENRE IS SELECTED, THEN ALL OF THE SONGS SHOULD BE OF THE SAME GENRE.
+
+  1. **Mood:**
+     - Identify the user's current emotional state (e.g., Happy, Sad, Excited, Relaxed).
+     - Select songs that encapsulate the identified mood through appropriate tempo, key signatures, and lyrical themes.
+     - Ensure a balance of instrumental and vocal tracks that convey the mood effectively.
+
+  2. **Activity:**
+     - Determine the user's current activity (e.g., Studying, Working, Exercising).
+     - Choose songs that enhance or complement the activity, such as high-energy tracks for exercising or mellow tunes for studying.
+     - Consider the rhythm and intensity of songs to match the physical or mental demands of the activity.
+
+  3. **Recent Event:**
+     - Analyze the recent event described by the user (e.g., Passed an exam, Had a bad day).
+     - Incorporate songs that resonate with the emotions or themes related to the event.
+     - Ensure that the selected songs provide emotional support or upliftment as needed.
+
+  4. **Energy Level:**
+     - Align the overall energy of the playlist with the user's specified energy level (0-100).
+     - For higher energy levels, include upbeat and fast-paced songs.
+     - For lower energy levels, select calming and slower-tempo tracks.
+
+  5. **Genre:**
+     - Prioritize the user's preferred music genres (e.g., Pop, Rock, Jazz, Classical).
+     - Within each genre, select a variety of sub-genres or styles to maintain diversity.
+     - Ensure that genre-specific characteristics are well-represented in the song choices.
+
+  6. **Time of Day:**
+     - Tailor the playlist to suit the specified time of day (e.g., Morning, Afternoon, Evening, Night).
+     - For mornings, opt for energizing and uplifting songs to start the day.
+     - For evenings or nights, choose relaxing and soothing tracks to unwind.
+
+  7. **Weather:**
+     - Match the playlist to the current weather condition (e.g., Sunny, Rainy, Snowy, Cloudy).
+     - Select songs that reflect the ambiance of the weather, such as bright and cheerful tunes for sunny days or mellow and introspective tracks for rainy weather.
+
+  8. **Wellness Needs:**
+     - Address the user's wellness needs (e.g., Motivation, Focus, Relaxation, Energy Boost).
+     - Curate songs that specifically aid in achieving these wellness goals.
+     - For motivation, include inspiring and high-energy songs; for relaxation, choose calming and gentle melodies.
+
+  9. **Music Pace:**
+     - Ensure that the overall tempo and rhythm of the playlist align with the user's preferred music pace (0-100).
+     - Maintain a consistent pacing to provide a seamless listening experience.
+     - Adjust the flow of the playlist to match transitions between different songs smoothly.
+
+  10.**Weighted Scoring and Prioritization:**
+     - **Normalization:**
+       - Apply min-max scaling to each input parameter to standardize values between 0 and 1.
+       - Ensure consistency in weighting across different scales and units.
+     - **Composite Scoring:**
+       - Assign predefined weights to each parameter based on their priority order.
+       - Calculate a composite score by multiplying each normalized parameter by its corresponding weight.
+       - Sum the weighted scores to determine the overall influence of each parameter on the playlist.
+     - **Prioritization:**
+       - Rank parameters based on their composite scores to identify the most influential factors.
+       - Allocate more resources and attention to higher-priority parameters during song selection.
+
+  **Additional Guidelines:**
+
+  - **Balanced Flow:** Arrange songs in a sequence that maintains listener engagement, avoiding abrupt changes in mood or tempo.
+
+  - **Diversity:** Incorporate a mix of popular hits and lesser-known tracks to enhance discovery and enjoyment.
+
+  - **Consistency:** Maintain uniform audio quality and production standards across all selected songs.
+
+  - **Playlist Length:** Limit the playlist to 20-30 tracks to ensure it remains manageable and satisfying for the listener.
+
+  - **Transition Smoothness:** Ensure that song transitions are smooth, considering key compatibility and complementary rhythms.
+
+  - **Listener Preferences:** If available, take into account the user's past listening habits and preferences to fine-tune song selections.
+
+  - **Cultural Relevance:** Select songs that are culturally relevant and appropriate for the user's context and preferences.
+
+  - **Genre Blending:** When appropriate, blend elements from multiple genres to create a unique and engaging playlist experience.
+
+  - **Avoid Repetition:** Ensure there is no repetition of songs within the playlist to maintain variety and interest.
+
+  - **Metadata Utilization:** Use song metadata (e.g., BPM, key, release date) to inform selections that best match the user's parameters.
+
+    input_parameters:
+    - mood: "{mood}"
+    - activity: "{activity}"
+    - recent_event: "{event}"
+    - energy_level: "{energy_level}"
+    - genre: "{genre}"
+    - time_of_day: "{time_of_day}"
+    - weather: "{weather}"
+    - wellness_needs: "{wellness_needs}"
+    - music_pace: "{music_pace}"
+
+  processing:
+    data_normalization:
+      method: "min-max"
+      scale: [0, 1]
+
+    weighted_scoring:
+      mood: 0.25
+      activity: 0.20
+      energy_level: 0.15
+      genre: 0.10
+      wellness_needs: 0.10
+      time_of_day: 0.08
+      weather: 0.07
+      music_pace: 0.05
+      recent_event: 0.05
+
+    playlist_constraints:
+      min_tracks: 20
+      max_tracks: 30
+      unique: true
+
+  parameters_processing:
+    mood:
+      considerations:
+        - emotional_state_identification
+        - tempo_key_signature_matching
+        - lyrical_theme_alignment
+        - instrumental_vocal_balance
+
+    activity:
+      considerations:
+        - activity_type_analysis
+        - energy_level_matching
+        - rhythm_intensity_alignment
+
+    recent_event:
+      considerations:
+        - emotional_context_analysis
+        - thematic_resonance
+        - supportive_content_selection
+
+    energy_level:
+      considerations:
+        - tempo_matching
+        - intensity_scaling
+        - dynamic_range_adjustment
+
+    genre:
+      considerations:
+        - primary_genre_prioritization
+        - subgenre_diversity
+        - characteristic_preservation
+
+    time_of_day:
+      considerations:
+        - temporal_context_matching
+        - energy_curve_alignment
+        - mood_appropriateness
+
+    weather:
+      considerations:
+        - ambiance_matching
+        - mood_enhancement
+        - atmospheric_alignment
+
+    wellness_needs:
+      considerations:
+        - goal_oriented_selection
+        - therapeutic_matching
+        - emotional_support_alignment
+
+    music_pace:
+      considerations:
+        - tempo_alignment
+        - rhythm_consistency
+        - transition_smoothness
+
+  additional_guidelines:
+    balanced_flow:
+      - engagement_maintenance
+      - smooth_transitions
+      - mood_consistency
+
+    diversity:
+      - popularity_mix
+      - artist_variety
+      - era_distribution
+
+    consistency:
+      - audio_quality_standards
+      - production_value
+      - volume_normalization
+
+    transition_smoothness:
+      - key_compatibility
+      - tempo_matching
+      - energy_flow
+
+    cultural_relevance:
+      - context_awareness
+      - appropriateness
+      - temporal_relevance
+
+    metadata_utilization:
+      - bpm_analysis
+      - key_signature_matching
+      - release_date_consideration
+
+
+  Only provide the JSON format playlist, no other separate text.
+
+# ReadME configuration
+readme: |
+  # Moodify - Your Personal Mood DJ 🎵
+
+  ## About
+  Moodify transforms your emotional state and daily context into perfectly curated music experiences. This advanced AI-powered system uses OpenAI gpt-4o to analyze multiple parameters including your mood, current activity, recent life events, energy level, genre preferences, time of day, weather conditions, wellness goals, and preferred music pace to generate highly personalized playlists.
+
+  ## How It Works
+  The system creates comprehensive music recommendations by applying a sophisticated weighted algorithm (Involving min-max scaling and variance controlled normalization, including composite scoring) that prioritizes the most impactful factors in your current context. Each generated playlist contains 20-30 unique songs, carefully selected and arranged to ensure smooth transitions and consistent audio quality.
+
+  For each playlist, Moodify provides detailed explanations of why each song was chosen, how it aligns with your input parameters, and its role in the overall listening experience. The system also generates individual parameter-specific playlists to help you understand how each factor influences the music selection.
+
+  ## Features
+  - Mood-based music curation
+  - Activity-specific playlists
+  - Weather-adaptive recommendations
+  - Wellness-focused song selection
+  - Energy level matching
+  - Time-of-day optimization
+  - Genre preferences consideration
+  - Detailed song selection explanations
+  - Smart transition management
+  - Psychological impact analysis
+
+  ## Example Input
+  ```json
+  {
+      "mood": "Heartbroken 💔",
+      "activity": "Listening to sad music 🎶",
+      "event": "After months of building dreams together, we decided to part ways, leaving me to navigate the stormy seas of loss and longing.",
+      "energy_level": 30,
+      "genre": "Blues 🎸",
+      "time_of_day": "Night 🌙",
+      "weather": "Rainy 🌧️",
+      "wellness_needs": ["Emotional support", "Reflection"],
+      "music_pace": 60
+  }
+  ```
+
+  ## Use Cases
+  - Study Enhancement
+  - Workout Optimization
+  - Emotional Support
+  - Mindfulness Practice
+  - Productivity Boost
+  - Mood Management
+  - Stress Relief
+  - Personal Reflection
+
+  ## Technical Details
+  - Model: OpenAI gpt-4o
+  - Playlist Length: 20-30 songs
+  - Parameter Weighting: Sophisticated algorithm
+  - Output Format: JSON with detailed explanations
+  - Audio Quality: Consistent high-quality standards
+
+  ## Why Moodify?
+  Whether you're looking to enhance your study session, optimize your workout, support your emotional well-being, or simply find the perfect soundtrack for your moment, Moodify adapts to your needs. The system's intelligent curation considers not just individual song selections, but also the overall flow, energy progression, and psychological impact of the entire playlist.
+
+  ## Get Started
+  Use Moodify to discover music that resonates with your current state, supports your goals, and enhances your daily experiences through the power of contextually aware music recommendations.
+
+  ---
+
+  Made with ❤️ by wafflebytes

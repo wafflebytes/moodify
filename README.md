@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+  # Moodify - Your Personal Mood DJ 🎵
 
-## Getting Started
+  ## About
+  Moodify transforms your emotional state and daily context into perfectly curated music experiences. This advanced AI-powered system uses OpenAI gpt-4o to analyze multiple parameters including your mood, current activity, recent life events, energy level, genre preferences, time of day, weather conditions, wellness goals, and preferred music pace to generate highly personalized playlists.
 
-First, run the development server:
+  ## How It Works
+  The system creates comprehensive music recommendations by applying a sophisticated weighted algorithm (Involving min-max scaling and variance controlled normalization, including composite scoring) that prioritizes the most impactful factors in your current context. Each generated playlist contains 20-30 unique songs, carefully selected and arranged to ensure smooth transitions and consistent audio quality.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  For each playlist, Moodify provides detailed explanations of why each song was chosen, how it aligns with your input parameters, and its role in the overall listening experience. The system also generates individual parameter-specific playlists to help you understand how each factor influences the music selection.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  ## Features
+  - Mood-based music curation
+  - Activity-specific playlists
+  - Weather-adaptive recommendations
+  - Wellness-focused song selection
+  - Energy level matching
+  - Time-of-day optimization
+  - Genre preferences consideration
+  - Detailed song selection explanations
+  - Smart transition management
+  - Psychological impact analysis
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  ## Example Input
+  ```json
+  {
+      "mood": "Heartbroken 💔",
+      "activity": "Listening to sad music 🎶",
+      "event": "After months of building dreams together, we decided to part ways, leaving me to navigate the stormy seas of loss and longing.",
+      "energy_level": 30,
+      "genre": "Blues 🎸",
+      "time_of_day": "Night 🌙",
+      "weather": "Rainy 🌧️",
+      "wellness_needs": ["Emotional support", "Reflection"],
+      "music_pace": 60
+  }
+  ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  ## Use Cases
+  - Study Enhancement
+  - Workout Optimization
+  - Emotional Support
+  - Mindfulness Practice
+  - Productivity Boost
+  - Mood Management
+  - Stress Relief
+  - Personal Reflection
 
-## Learn More
+  ## Technical Details
+  - Model: OpenAI gpt-4o
+  - Playlist Length: 20-30 songs
+  - Parameter Weighting: Sophisticated algorithm
+  - Output Format: JSON with detailed explanations
+  - Audio Quality: Consistent high-quality standards
 
-To learn more about Next.js, take a look at the following resources:
+  ## Why Moodify?
+  Whether you're looking to enhance your study session, optimize your workout, support your emotional well-being, or simply find the perfect soundtrack for your moment, Moodify adapts to your needs. The system's intelligent curation considers not just individual song selections, but also the overall flow, energy progression, and psychological impact of the entire playlist.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ## Get Started
+  Use Moodify to discover music that resonates with your current state, supports your goals, and enhances your daily experiences through the power of contextually aware music recommendations.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+  ---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+  Made with ❤️ by wafflebytes
