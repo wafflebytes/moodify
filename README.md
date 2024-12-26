@@ -1,4 +1,4 @@
-  # Moodify - Your Personal Mood DJ 🎵 using Mira AI Flows
+  # Moodify - Your Personal Mood DJ 🎵 - using Mira AI Flows
 Submission by Chaitanya Jha | IIT Patna | chaitanyajha@icloud.com
 --
 Demo Video Link: https://youtu.be/sr8SNk0gbOQ
