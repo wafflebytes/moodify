@@ -57,7 +57,7 @@ Submission by Chaitanya Jha | IIT Patna | chaitanyajha@icloud.com
   - Playlist Length: 20-30 songs
   - Parameter Weighting: Sophisticated algorithm
   - Output Format: JSON with detailed explanations
-  - Audio Quality: Consistent high-quality standards
+  - Audio Quality: Consistent high-quality standards (Possibility of connecting with Spotify using Composio.
 
   ## Why Moodify?
   Whether you're looking to enhance your study session, optimize your workout, support your emotional well-being, or simply find the perfect soundtrack for your moment, Moodify adapts to your needs. The system's intelligent curation considers not just individual song selections, but also the overall flow, energy progression, and psychological impact of the entire playlist.
